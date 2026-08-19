@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Akalima — Sekbid Bendahara</title>
+
+<!-- ============================================
+     OPEN GRAPH — biar link-nya bagus kalo di-share
+     GANTI og:url ke link asli pas udah di-hosting,
+     dan og:image ke link foto/gambar OG kamu (lihat prompt gambar di bawah)
+     ============================================ -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Iqlima C.R (Akalima) — Sekbid Bendahara OSIS">
+<meta property="og:description" content="Portofolio Akalima, Sekbid Bendahara OSIS SMK Pasundan 3 Kota Cimahi. PMR, Jurnalistik, dan cerita di baliknya.">
+<meta property="og:image" content="og-banner.jpg">
+<meta property="og:url" content="[GANTI: link website kamu]">
+<meta property="og:locale" content="id_ID">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Iqlima C.R (Akalima) — Sekbid Bendahara OSIS">
+<meta name="twitter:description" content="Portofolio Akalima, Sekbid Bendahara OSIS SMK Pasundan 3 Kota Cimahi.">
+<meta name="twitter:image" content="og-banner.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  /* ============================================
+     EDIT DI SINI: ganti nama, jabatan, isi, dst.
+     Semua teks placeholder ditandai [GANTI]
+     ============================================ */
+
+  :root{
+    --ink:#2B2A18;
+    --base:#F7F6EC;
+    --card:#FFFFFF;
+    --olive:#BAB86C;
+    --olive-dark:#8F8D4E;
+    --olive-light:#D9D79C;
+    --olive-deep:#6B6939;
+    --olive-pale:#EFEEDC;
+    --line: rgba(43,42,24,0.12);
+    --shadow: 6px 6px 0 var(--ink);
+  }
+
+  *{box-sizing:border-box;}
+  svg{display:block; flex-shrink:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(circle at 1px 1px, rgba(36,27,47,0.08) 1px, transparent 0) 0 0/22px 22px,
+      var(--base);
+    color:var(--ink);
+    font-family:'Plus Jakarta Sans', sans-serif;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Fredoka', sans-serif; margin:0;}
+  .mono{font-family:'Space Mono', monospace;}
+
+  /* ---------- blobs ambient ---------- */
+  .blob{position:fixed; border-radius:50%; filter:blur(60px); opacity:0.35; z-index:0; pointer-events:none;}
+  .blob1{width:340px;height:340px; background:radial-gradient(circle at 30% 30%, var(--olive-light), var(--olive) 70%); top:-100px; left:-100px; animation:float1 14s ease-in-out infinite;}
+  .blob2{width:280px;height:280px; background:radial-gradient(circle at 60% 40%, var(--olive), var(--olive-deep) 75%); bottom:-80px; right:-80px; animation:float2 16s ease-in-out infinite;}
+  .blob3{width:220px;height:220px; background:radial-gradient(circle at 35% 30%, var(--olive-light), var(--olive) 60%, var(--olive-dark)); top:45%; right:10%; animation:float1 12s ease-in-out infinite reverse;}
+  @keyframes float1{0%,100%{transform:translate(0,0)} 50%{transform:translate(30px,40px)}}
+  @keyframes float2{0%,100%{transform:translate(0,0)} 50%{transform:translate(-25px,-35px)}}
+
+  nav{
+    position:sticky; top:0; z-index:50;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:18px 6vw;
+    background:rgba(246,241,255,0.75);
+    backdrop-filter:blur(10px);
+    border-bottom:2px solid var(--ink);
+  }
+  nav .brand{font-family:'Fredoka'; font-weight:700; font-size:1.2rem;}
+  nav .brand span{color:var(--olive);}
+  nav .links{display:flex; gap:22px; font-size:0.9rem; font-weight:600;}
+  nav .links a{color:var(--ink); text-decoration:none; opacity:0.7; transition:opacity .2s;}
+  nav .links a:hover{opacity:1;}
+
+  section{position:relative; z-index:1; padding:90px 6vw; max-width:1100px; margin:0 auto;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:88vh; display:flex; align-items:center; gap:60px;
+    padding-top:60px;
+  }
+  .hero-text{flex:1.3;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--olive); border:2px solid var(--ink); border-radius:999px;
+    padding:6px 16px; font-size:0.8rem; font-weight:700; box-shadow:var(--shadow);
+    transform:rotate(-2deg); margin-bottom:22px;
+  }
+  .hero h1{font-size:clamp(2.6rem, 6vw, 4.6rem); line-height:1.05; font-weight:700;}
+  .hero h1 .hi{color:var(--olive);}
+  .hero p.tagline{font-size:1.15rem; max-width:480px; margin-top:18px; opacity:0.85; line-height:1.6;}
+  .hero-cta{display:flex; gap:14px; margin-top:32px;}
+  .btn{
+    font-family:'Plus Jakarta Sans'; font-weight:700; font-size:0.95rem;
+    padding:14px 26px; border-radius:14px; border:2px solid var(--ink);
+    cursor:pointer; text-decoration:none; color:var(--ink);
+    box-shadow:var(--shadow); transition:transform .15s, box-shadow .15s;
+    display:inline-block;
+  }
+  .btn:hover{transform:translate(-3px,-3px); box-shadow:9px 9px 0 var(--ink);}
+  .btn.primary{background:var(--olive);}
+  .btn.ghost{background:var(--card);}
+
+  .hero-photo{
+    flex:1; display:flex; justify-content:center; align-items:center;
+    position:relative;
+  }
+  .photo-frame{
+    width:280px; height:280px; border-radius:32px;
+    background:var(--olive);
+    border:3px solid var(--ink); box-shadow:var(--shadow);
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden; position:relative;
+    transform:rotate(4deg);
+    animation:wiggle 6s ease-in-out infinite;
+  }
+  .photo-frame img{width:100%; height:100%; object-fit:cover; display:block;}
+  @keyframes wiggle{0%,100%{transform:rotate(4deg)} 50%{transform:rotate(-1deg)}}
+  .tape{
+    position:absolute; width:90px; height:32px; background:rgba(255,201,63,0.85);
+    border:2px solid var(--ink); top:-14px; left:50%; margin-left:-45px;
+    transform:rotate(-6deg);
+  }
+  .photo-caption{
+    position:absolute; bottom:-18px; right:-10px;
+    background:var(--card); border:2px solid var(--ink); border-radius:10px;
+    padding:6px 12px; font-size:0.75rem; font-weight:700; box-shadow:4px 4px 0 var(--ink);
+    transform:rotate(-4deg);
+  }
+
+  /* ---------- SECTION LABEL ---------- */
+  .section-label{
+    display:inline-block; font-family:'Space Mono'; font-size:0.85rem; font-weight:700;
+    background:var(--ink); color:var(--base); padding:5px 14px; border-radius:8px;
+    margin-bottom:14px;
+  }
+  .section-title{font-size:clamp(1.8rem,4vw,2.6rem); margin-bottom:36px;}
+
+  /* ---------- ABOUT (sticky note) ---------- */
+  .about-card{
+    background:var(--card); border:2px solid var(--ink); border-radius:20px;
+    padding:38px; box-shadow:var(--shadow); position:relative;
+    font-size:1.05rem; line-height:1.75;
+  }
+  .about-icon{
+    position:absolute; top:-22px; left:32px;
+    background:var(--olive-dark); border:2px solid var(--ink); border-radius:50%;
+    width:48px; height:48px; display:flex; align-items:center; justify-content:center;
+    color:white;
+  }
+  .about-icon svg{display:block;}
+
+  /* ---------- BADGES (jabatan/prestasi) ---------- */
+  .badge-row{display:flex; flex-wrap:wrap; gap:18px;}
+  .badge{
+    flex:1 1 220px; background:var(--card); border:2px solid var(--ink); border-radius:18px;
+    padding:24px; box-shadow:var(--shadow); transition:transform .2s;
+  }
+  .badge:hover{transform:translateY(-6px);}
+  .badge .icon{
+    width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-size:1.3rem; margin-bottom:14px; border:2px solid var(--ink);
+  }
+  .badge:nth-child(1) .icon{background:var(--olive);}
+  .badge:nth-child(2) .icon{background:var(--olive-light);}
+  .badge:nth-child(3) .icon{background:var(--olive-dark); color:white;}
+  .badge:nth-child(4) .icon{background:var(--olive-deep); color:white;}
+  .badge h3{font-size:1.05rem; margin-bottom:6px;}
+  .badge p{font-size:0.88rem; opacity:0.75; margin:0; line-height:1.5;}
+
+  /* ---------- PROJECTS (scrapbook cards) ---------- */
+  .project-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:28px;}
+  .project-card{
+    background:var(--card); border:2px solid var(--ink); border-radius:18px; overflow:hidden;
+    box-shadow:var(--shadow); transition:transform .25s, box-shadow .25s;
+  }
+  .project-card:nth-child(odd){transform:rotate(-1.5deg);}
+  .project-card:nth-child(even){transform:rotate(1.5deg);}
+  .project-card:hover{transform:rotate(0deg) translateY(-6px); box-shadow:10px 10px 0 var(--ink);}
+  .project-thumb{
+    height:130px; display:flex; align-items:center; justify-content:center;
+    font-size:2.2rem; border-bottom:2px solid var(--ink);
+  }
+  .project-card:nth-child(1) .project-thumb{background:var(--olive);}
+  .project-card:nth-child(2) .project-thumb{background:var(--olive-dark);}
+  .project-card:nth-child(3) .project-thumb{background:var(--olive);}
+  .project-thumb.doc-photo{
+    height:170px; padding:0; overflow:hidden;
+  }
+  .project-thumb.doc-photo img{
+    width:100%; height:100%; object-fit:cover; display:block;
+  }
+  .project-thumb.poster-thumb{
+    height:auto; aspect-ratio:3/4; background:var(--olive-dark); overflow:hidden; padding:0;
+  }
+  .project-thumb.poster-thumb img{
+    width:100%; height:100%; object-fit:cover; display:block;
+  }
+  .poster-feature{
+    background:var(--card); border:2px solid var(--ink); border-radius:18px; overflow:hidden;
+    box-shadow:var(--shadow); max-width:280px; margin:40px auto 0; transform:rotate(-1deg);
+  }
+  .project-body{padding:20px;}
+  .project-tag{
+    font-family:'Space Mono'; font-size:0.7rem; background:var(--base); border:1px solid var(--ink);
+    padding:3px 10px; border-radius:999px; display:inline-block; margin-bottom:10px;
+  }
+  .project-body h3{font-size:1.1rem; margin-bottom:8px;}
+  .project-body p{font-size:0.88rem; line-height:1.55; opacity:0.8; margin:0;}
+
+  /* ---------- CONTACT ---------- */
+  .contact-wrap{
+    background:var(--ink); border-radius:28px; padding:60px 6vw; text-align:center;
+    color:var(--base); position:relative; overflow:hidden;
+  }
+  .contact-wrap h2{color:white; font-size:clamp(1.8rem,4vw,2.6rem);}
+  .contact-wrap p{opacity:0.75; margin-top:10px;}
+  .contact-buttons{display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-top:34px;}
+  .contact-btn{
+    display:flex; align-items:center; gap:10px;
+    background:var(--base); color:var(--ink); border:2px solid var(--ink);
+    padding:14px 24px; border-radius:14px; text-decoration:none; font-weight:700;
+    box-shadow:5px 5px 0 var(--olive); transition:transform .15s;
+  }
+  .contact-btn:hover{transform:translate(-3px,-3px);}
+
+  footer{text-align:center; padding:30px; font-size:0.8rem; opacity:0.55;}
+
+  /* reveal on scroll */
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.show{opacity:1; transform:translateY(0);}
+
+  @media (max-width:820px){
+    .hero{flex-direction:column; text-align:center; padding-top:20px;}
+    .hero-cta{justify-content:center;}
+    nav .links{display:none;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="blob blob3"></div>
+
+<nav>
+  <div class="brand">Aka<span>.</span></div>
+  <div class="links">
+    <a href="#about">Tentang</a>
+    <a href="#jabatan">Jabatan</a>
+    <a href="#project">Project</a>
+    <a href="#contact">Kontak</a>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="eyebrow"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.9 6.3L21 9l-4.8 4.5L17.5 21 12 17.6 6.5 21l1.3-7.5L3 9l6.1-.7L12 2Z"/></svg> Sekbid Bendahara 2025/2026</div>
+    <h1>Halo, aku <span class="hi">Akalima</span><br>Iqlima C.R</h1>
+    <p class="tagline">CR itu bukan Cristiano Ronaldo ya wkwk — CR itu Cahya Ramadina. Suka warna ijo, strawberry, dan karya sastra.</p>
+    <div class="hero-cta">
+      <a href="#project" class="btn primary">Liat Project →</a>
+      <a href="#contact" class="btn ghost">Kontak Aku</a>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <div class="photo-frame">
+      <div class="tape"></div>
+      <img src="foto-akalima.png" alt="Foto Iqlima C.R">
+    </div>
+    <div class="photo-caption">SMK Pasundan 3 Cimahi <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:-2px"><path d="M12 21s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about" class="reveal">
+  <div class="section-label">// tentang aku</div>
+  <h2 class="section-title">Kenalan dikit yuk</h2>
+  <div class="about-card">
+    <div class="about-icon">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5Z"/></svg>
+    </div>
+    Namaku Iqlima C.R — CR ini bukan Cristiano Ronaldo ya wkwk, tapi Cahya Ramadina. Selain jadi Bendahara di OSIS, aku juga anak PMR. Warna favoritku ijo, dan aku suka BANGET BANGET sama buah strawberry (sama Windah Basudara juga, hohoho). Aku juga suka nulis — walaupun jujur aja tulisan tanganku jelek wkwk — maksudnya suka karya sastra kayak puisi atau novel gitu. Makanya selain OSIS dan PMR, aku juga anak Jurnalistik, dan seringnya sih berkontribusi di bagian penulisan naskah-naskah beritanya.
+  </div>
+</section>
+
+<!-- ================= JABATAN / PRESTASI ================= -->
+<section id="jabatan" class="reveal">
+  <div class="section-label">// jabatan & pencapaian</div>
+  <h2 class="section-title">Yang pernah dikerjain</h2>
+  <div class="badge-row">
+    <div class="badge">
+      <div class="icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v6a4 4 0 0 1-8 0V4Z"/><path d="M8 5H5a2 2 0 0 0 0 4h1"/><path d="M16 5h3a2 2 0 0 1 0 4h-1"/><path d="M9 20h6"/><path d="M12 14v6"/></svg></div>
+      <h3>Sekbid Bendahara</h3>
+      <p>Periode 2025-2026</p>
+    </div>
+    <div class="badge">
+      <div class="icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9v6h3l6 4V5L6 9H3Z"/><path d="M16 8a4 4 0 0 1 0 8"/><path d="M19 5a8 8 0 0 1 0 14"/></svg></div>
+      <h3>Anggota PMR</h3>
+      <p>Selain jadi Bendahara di OSIS, aku juga anak PMR.</p>
+    </div>
+    <div class="badge">
+      <div class="icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="15" r="5"/><path d="M9 10 6 3H4l4 8"/><path d="M15 10l3-7h2l-4 8"/><path d="M12 12v6"/></svg></div>
+      <h3>Juara 3 Lomba PMR</h3>
+      <p>Seminar Kesehatan "Self Care Bukan Egois" STKIP Pasundan Cimahi, 1 November 2025</p>
+    </div>
+    <div class="badge">
+      <div class="icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></div>
+      <h3>Anak Jurnalistik</h3>
+      <p>Sukanya nulis karya sastra kaya puisi atau novel, dan seringnya berkontribusi di bagian penulisan naskah-naskah berita.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJECT / KEGIATAN ================= -->
+<section id="project" class="reveal">
+  <div class="section-label">// project & kegiatan</div>
+  <h2 class="section-title">Beberapa hal yang udah dibikin</h2>
+
+  <div class="project-grid">
+    <div class="project-card">
+      <div class="project-thumb doc-photo"><img src="dok-pmr-1.jpg" alt="Dokumentasi lomba PMR"></div>
+      <div class="project-body">
+        <span class="project-tag">PMR</span>
+        <h3>Seminar Kesehatan & Lomba PMR</h3>
+        <p>ikut Seminar Kesehatan "Self Care Bukan Egois" kolaborasi STKIP Pasundan & KSR PMI STKIP Pasundan Cimahi, sekalian dapet Juara 3 di lomba PMR-nya, alhamdulillah hehe</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-thumb doc-photo"><img src="dok-pmr-2.jpg" alt="Dokumentasi kebersamaan tim PMR"></div>
+      <div class="project-body">
+        <span class="project-tag">PMR</span>
+        <h3>Kebersamaan Tim PMR</h3>
+        <p>momen seneng-seneng bareng tim PMR abis lomba, seru bgt rasanya wkwk</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-thumb doc-photo"><img src="dok-osis-1.jpg" alt="Dokumentasi pemilihan anggota OSIS baru"></div>
+      <div class="project-body">
+        <span class="project-tag">OSIS</span>
+        <h3>Pemilihan Anggota OSIS Baru</h3>
+        <p>momen pas kegiatan pemilihan anggota OSIS baru di sekolah</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="poster-feature">
+    <div class="project-thumb poster-thumb">
+      <img src="poster-bendahara.webp" alt="Poster Seksi Bidang Bendahara OSIS">
+    </div>
+    <div class="project-body">
+      <span class="project-tag">Poster OSIS</span>
+      <h3>Poster Seksi Bidang Bendahara</h3>
+      <p>ini poster buat Seksi Bidang Bendahara OSIS 2025/2026 punya kita, dibikin bareng-bareng sama tim yaa hehe</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="reveal">
+  <div class="contact-wrap">
+    <h2 style="display:flex; align-items:center; justify-content:center; gap:10px;">Yuk ngobrol <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg></h2>
+    <p>Ada ide, kerjasama, atau cuma mau say hi — cus hubungin aku.</p>
+    <div class="contact-buttons">
+      <a class="contact-btn" href="https://instagram.com/username" target="_blank"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg> Instagram</a>
+      <a class="contact-btn" href="https://wa.me/6281234567890" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/></svg> WhatsApp</a>
+      <a class="contact-btn" href="https://tiktok.com/@username" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3z"/></svg> TikTok</a>
+    </div>
+  </div>
+</section>
+
+<footer>Dibikin dengan <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:-3px"><path d="M18 8h1a3 3 0 0 1 0 6h-1"/><path d="M2 8h16v6a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8Z"/><path d="M6 2v2M10 2v2M14 2v2"/></svg> &amp; sedikit chaos — [GANTI: nama kamu] © 2026</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); } });
+  }, {threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
